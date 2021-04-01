@@ -1,25 +1,16 @@
-const { ApolloServer } = require('apollo-server');
-const gql = require('graphql-tag');
+const { ApolloServer, PubSub } = require('apollo-server');
+
 const mongoose = require('mongoose');
 
 // const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_USER_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net`;
-
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require('./config.js');
-
-const typeDefs = gql`
-  type Query {
-    sayHi: String!
-  }
-`;
-const resolvers = {
-  Query: {
-    sayHi: () => 'Hello World',
-  },
-};
-
+const pubsub = new PubSub();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req, pubsub }),
 });
 
 mongoose
