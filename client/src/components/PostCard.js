@@ -1,18 +1,17 @@
-import React from 'react';
-import { Card, Icon, Label, Image, Button } from 'semantic-ui-react';
+import React, { useContext } from 'react';
+import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+
+import { AuthContext } from '../context/auth';
+import LikeButton from './LikeButton';
+import DeleteButton from './DeleteButton';
+import MyPopup from '../utils/MyPopup';
 
 function PostCard({
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) {
-  function likePost() {
-    console.log('like post');
-  }
-
-  function commentonPost() {
-    console.log('like post');
-  }
+  const { user } = useContext(AuthContext);
 
   return (
     <Card fluid>
@@ -29,32 +28,18 @@ function PostCard({
         <Card.Description>{body}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button
-          labelPosition="right"
-          as={Link}
-          to={`/posts/${id}`}
-          onClick={likePost}
-        >
-          <Button color="red" basic>
-            <Icon name="heart" />
+        <LikeButton user={user} post={{ id, likes, likeCount }} />
+        <MyPopup content="Comment on post">
+          <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
+            <Button color="blue" basic>
+              <Icon name="comments" />
+            </Button>
+            <Label basic color="blue" pointing="left">
+              {commentCount}
+            </Label>
           </Button>
-          <Label basic color="blue" pointing="left">
-            {likeCount}
-          </Label>
-        </Button>
-        <Button
-          labelPosition="right"
-          as={Link}
-          to={`/posts/${id}`}
-          onClick={commentonPost}
-        >
-          <Button color="blue" basic>
-            <Icon name="comments" />
-          </Button>
-          <Label basic color="blue" pointing="left">
-            {commentCount}
-          </Label>
-        </Button>
+        </MyPopup>
+        {user && user.username === username && <DeleteButton postId={id} />}
       </Card.Content>
     </Card>
   );
