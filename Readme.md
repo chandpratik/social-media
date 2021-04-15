@@ -29,7 +29,7 @@ It implements a GraphQL server that uses Node and Express to communicate to a Mo
 
 - React
 - MongoDB
-- Apollo Client
+- Apollo Server
 - GraphQL
 - node.js - evented I/O for the backend
 - Express - fast node.js network app framework
