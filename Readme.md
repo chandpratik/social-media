@@ -1,6 +1,12 @@
 # Social Media App (Quotes Sharing)
 
+## [Before opening the client click this link to wake the server ](https://stormy-journey-37066.herokuapp.com/)
+
+## After getting GET query missing on your screen use the App with the below link.
+
 ## [Check out the live version ](https://netflix-clone-webapp.netlify.app/)
+
+## Use username gjwkebh@hi2.in, pass - 12345678 to login or create your own user
 
 <img src="./images/ss.png" style="box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);" />
 
