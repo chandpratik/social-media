@@ -1,8 +1,5 @@
 # Social Media App (Quotes Sharing)
 
-# [Before opening the client click this link to wake the server ](https://stormy-journey-37066.herokuapp.com/)
-
-# After getting GET query missing on your screen use the App with the below link.
 
 ## [Check out the live version ](https://quote-social-media-webapp.netlify.app/)
 
